@@ -8,8 +8,8 @@ def main():
     #print(character_count_sorted)
     print(f"{num_words} words found in the document")
     #loop to iterate through returned sorted list of tuples in sort_character_count function and return the tuple values
-    for char, count in character_count_sorted:
-        if char.isalpha():
+    for char, count in character_count_sorted: #loop to directly unpack tuple and assign value pairs into char and count
+        if char.isalpha(): #built-in python method to verify a character is an alphabetical character (removes special characters)
             print(f"The '{char}' character was found {count} times")
     print("---  End Report ---")
 
@@ -36,9 +36,11 @@ def get_character_count(text):
             char_count[char] = 1
     return char_count
 
+    #Function to convert character_count dictionary into a list (this is required to use the .sort() function since it can't be used 
+    #on a dictionary)
 def sort_character_count(character_count):
     items = list(character_count.items())
-    items.sort(reverse=True, key=lambda item: item[1])
+    items.sort(reverse=True, key=lambda item: item[1]) #sorts values from highest to lowest
     return items
 
 
